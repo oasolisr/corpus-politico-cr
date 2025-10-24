@@ -1,0 +1,7 @@
+# Ignorar carpetas generadas por Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+
+# Ignorar carpeta de resultados de tu proyecto
+output/
