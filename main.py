@@ -1,16 +1,15 @@
 import pandas as pd
-import spacy
-import logging
-import re
 from tqdm import tqdm
-import matplotlib.pyplot as plt
-import seaborn as sns
-import utils
-import extractSentencesMethods
+import src.utils as utils
+import src.extractSentencesMethods as extractSentencesMethods
 from datetime import datetime
 import os
 
 PDF_ROOT = "corpus-electoral/docs"
+OUTPUT_FOLDER = "output"
+
+# Crear carpeta si no existe
+os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 def build_dataset(root_dir):
     rows = []
@@ -78,6 +77,8 @@ if __name__ == "__main__":
 
     # Build filename with timestamp
     filename = f"political_sentences_dataset_{ts}.csv"
-    df.to_csv(filename, index=False)
+    # Path completo
+    filepath = os.path.join(OUTPUT_FOLDER, filename)
+    df.to_csv(filepath, index=False)
 
     print("Saved:", filename)
